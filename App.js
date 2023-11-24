@@ -1,6 +1,5 @@
 import {Home} from "./Screens/Home";
 import styled from "styled-components/native";
-import {View} from "react-native";
 
 const ScreenView = styled.View`
   flex: 1;

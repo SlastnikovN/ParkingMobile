@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import {StyleSheet} from 'react-native';
 import styled from "styled-components/native";
-import {MapImage} from "../Components/MapImage";
 import {ButtonMagnifier} from "../Components/ButtonMagnifier";
 import {ButtonUser} from "../Components/ButtonUser";
 import MapView from 'react-native-maps';
@@ -20,7 +18,6 @@ export const Home = () =>{
                     latitudeDelta: 0.015,
                     longitudeDelta: 0.0121,
                 }}
-                
             ></MapView>
             <ButtonMagnifier></ButtonMagnifier>
             <ButtonUser></ButtonUser>
