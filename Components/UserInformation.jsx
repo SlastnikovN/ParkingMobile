@@ -1,78 +1,90 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, Button, FlatList} from 'react-native';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, ScrollView} from 'react-native';
 import styled from 'styled-components/native';
 
 const Profile = styled.View`
     flex: 1;
-    top: 17%;
-    left: 11%;
+    margin-top: 35%;
+    margin-left: 10%;
     width: 80%;
-    height: 50%; 
+    height: 40%; 
     position: absolute;
-    background-color: black;
+    background-color: #333;
     border-radius: 10px;
-`;
-const UserName = styled.View`
-    flex: 1;
-    top: 2%;
-    left: 4%;
-    width: 95%;
-    height: %; 
-    position: absolute;
-`;
-const UserCars = styled.View`
-    flex: 2;
-    top: 50%;
-    left: 4%;
-    width: 90%;
-    height: %; 
-    position: absolute;
+    padding: 20px;
 `;
 
-const Text_UserName = styled.Text`
-    color: white;
-    fontSize: 30px;
+const UserInfoContainer = styled.View`
+    border: 1px solid #fff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
 `;
 
-const Text_UserEmail = styled.Text`
-    color: white;
-    fontSize: 30px;
+const CarListContainer = styled.ScrollView`
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 5px;
 `;
 
-const NumCar = styled.Text`
+const TextTitle = styled.Text`
     color: white;
-    fontSize: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+`;
+
+const TextInfo = styled.Text`
+    color: white;
+    font-size: 23px;
+    margin-bottom: 5px;
+`;
+
+const CarItem = styled.View`
+    padding: 10px;
+    margin-bottom: 5px;
+    border-bottom-width: 1px;
+    border-color: #ddd;
 `;
 
 export const UserInformation = ({ user }) => {
-    console.log("User data in UINF", user)
-    if (!user || !user.cars) {
-        return <Text>Данные пользователя не загружены</Text>;
-    }
+    const [expandedCarIds, setExpandedCarIds] = useState([]);
 
-    console.log("User UINF", user);
-    user.cars.forEach(car => console.log(car));
+    const toggleExpandCar = (carId) => {
+        setExpandedCarIds(prevIds =>
+            prevIds.includes(carId) ? prevIds.filter(id => id !== carId) : [...prevIds, carId]
+        );
+    };
+
+    if (!user || !user.cars) {
+        return <TextInfo>Данные пользователя не загружены</TextInfo>;
+    }
 
     return (
         <Profile>
-            <UserName>
-                <Text_UserName >Пользователь: {user.username}</Text_UserName>
-                <Text_UserEmail >Email: {user.email}</Text_UserEmail>
-            </UserName>
-            <UserCars>
-                <Text_UserName >Зарегистрированые автомобили:</Text_UserName>
-                <FlatList
-                data={user.cars}
-                // keyExtractor={({item}) => item.car_id?.toString() ?? index.toString()}
-                renderItem={({ item }) => (
-                    <View>
-                        <NumCar>Номер Авто: {item.car_number ?? 'Н/Д'}</NumCar>
-                        {/* <Text>Время начала: {item.time?.start_time ?? 'Н/Д'}</Text>
-                        <Text>Время окончания: {item.time?.end_time ?? 'Н/Д'}</Text> */}
-                    </View>
-                )}
-            />
-            </UserCars>
+            <ScrollView>
+                <TextTitle>Пользователь:</TextTitle>
+                <UserInfoContainer>
+                    <TextTitle>{user.username}</TextTitle>
+                </UserInfoContainer>
+                <TextInfo>Email:</TextInfo>
+                <UserInfoContainer>
+                    <TextTitle>{user.email}</TextTitle>
+                </UserInfoContainer>
+                <TextTitle>Зарегистрированные автомобили:</TextTitle>
+                {user.cars.map((car, index) => (
+                    <TouchableOpacity key={index} onPress={() => toggleExpandCar(car.car_id)}>
+                        <CarItem>
+                            <TextInfo>Номер авто: {car.car_number}</TextInfo>
+                            {/* Дополнительная информация о машине (если нужно) */}
+                            {expandedCarIds.includes(car.car_id) && (
+                                <View>
+                                    {/* Сюда можно добавить дополнительные данные о машине */}
+                                </View>
+                            )}
+                        </CarItem>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
         </Profile>
     );
 };
