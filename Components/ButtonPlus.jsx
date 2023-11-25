@@ -14,7 +14,7 @@ const Touch = styled.TouchableOpacity`
 `;
 export const ButtonPlus = () => {
     return <Touch>
-        <ButtonComponentPlus source={require('../assets/ButtonPlus.png')}/>
+        <ButtonComponentPlus source={require('../assets/Image/ButtonPlus.png')}/>
     </Touch>
 
 

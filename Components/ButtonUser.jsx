@@ -15,6 +15,7 @@ const Container = styled.View`
     right: 2%;
 `
 
+<<<<<<< Updated upstream
 export const ButtonUser = ({onPress}) => {
     return (
         <Container>
@@ -24,3 +25,16 @@ export const ButtonUser = ({onPress}) => {
         </Container>
     );
 };
+=======
+export const ButtonUser = () => {
+    return <Container>
+        <Touch>
+            <ButtonComponentUser source={require('../assets/Image/ButtonUser.png')}/>
+        </Touch>
+    </Container>
+
+
+
+
+}
+>>>>>>> Stashed changes
