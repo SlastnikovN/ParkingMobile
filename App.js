@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import {Home} from "./Screens/Home";
 import styled from "styled-components/native";
-import {StyleSheet} from "react-native";
-import {StatusBar} from 'expo-status-bar';
 import Registration from "./Screens/Registration";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+const Stack = createNativeStackNavigator();
+
 
 const ScreenView = styled.View`
   flex: 1;
@@ -11,18 +14,23 @@ const ScreenView = styled.View`
 
 export default function App() {
   const [user, setUser] = useState(null);
-  const url = new URL('http://79.174.82.190:8888/api/v1/profile?mail=example@example.com');
+  const url = new URL('http://79.174.82.190:8888/api/v1/profile?user_id=123');
 
 const getDataUsingGet = () => {
     fetch(url, {
         method: 'GET',
-  })
+        headers: {'Content-Type': 'application/json'},
+      }) 
     .then((response) => {
         if (response.status === 200) {
             return response.json();
         } else {
             alert('Ошибка при запросе данных');
-            console.error('Ошибка при запросе данных:', response.status.body)
+            console.error('Ошибка при запросе данных:', response.status)
+        }
+        if (response.status === 500) {
+          alert('Ошибка сервера');
+          console.error('Ошибка сервера:', response.status)
         }
     })
     .then((responseJson) => {
@@ -41,30 +49,19 @@ const getDataUsingGet = () => {
     });
   };
 
-  useEffect(() => {
-    getDataUsingGet();
-  }, []);
+    useEffect(() => {
+        getDataUsingGet();
+    }, []);
 
-  console.log("User App", user);
+    console.log("User App", user);
 
-  return (
-<ScreenView>
-  <StatusBar style = "auto"></StatusBar>
-    <Home></Home>
-</ScreenView>
-  );
+    return (
+       <NavigationContainer>
+           <Stack.Navigator initialRouteName= "Registration" screenOptions={{ headerShown: false }}>
+               <Stack.Screen name="Home" component={Home} initialParams={{user: user}}/>
+               <Stack.Screen name="Registration" component={Registration}/>
+           </Stack.Navigator>
+       </NavigationContainer>
+    );
 }
-
-const styles = StyleSheet.create({
-  textStyle: {
-    fontSize: 18,
-    color: 'white',
-  },
-  buttonStyle: {
-    alignItems: 'center',
-    backgroundColor: '#f4511e',
-    padding: 10,
-    marginVertical: 10,
-  },
-});
 
