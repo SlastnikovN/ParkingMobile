@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {Home} from "./Screens/Home";
 import styled from "styled-components/native";
-import {StyleSheet, Text, TouchableOpacity} from "react-native";
+import {StyleSheet} from "react-native";
 import {StatusBar} from 'expo-status-bar';
 import Registration from "./Screens/Registration";
 
@@ -49,9 +49,8 @@ const getDataUsingGet = () => {
 
   return (
 <ScreenView>
-
   <StatusBar style = "auto"></StatusBar>
-  {user ? <Home user={user}/> : <Text>Загрузка...</Text>}
+    <Home></Home>
 </ScreenView>
   );
 }
