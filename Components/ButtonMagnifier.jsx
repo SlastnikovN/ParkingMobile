@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const ButtonComponentMagnifier = styled.Image`
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
 `;
 
 const Touch = styled.TouchableOpacity`
@@ -23,7 +22,7 @@ align-items: center;
 export const ButtonMagnifier = () => {
     return <ScreenView>
         <Touch>
-            <ButtonComponentMagnifier source={require('../assets/Image/ButtonMagnifier.png')}/>
+            <ButtonComponentMagnifier source={require('../assets/Image/magnifier_Button.png')}/>
         </Touch>
     </ScreenView>
 

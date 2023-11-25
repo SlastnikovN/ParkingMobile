@@ -6,7 +6,6 @@ export const markers = [
         longitude: 58.976611,
         latitudeDelta: 1,
         longitudeDelta: 1,
-        adress: "Подземная парковка",
     },
     //Aboveground parking
     {
@@ -14,7 +13,6 @@ export const markers = [
         longitude: 58.977393,
         latitudeDelta: 1,
         longitudeDelta: 1,
-        adress: "Надземная парковка"
     }
 
 

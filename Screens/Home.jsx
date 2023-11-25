@@ -43,7 +43,11 @@ const INITIAL_REGION =  {
                 showsMyLocationButton
             >
                 {markers.map((marker,index) => (
-                    <Marker key={index} coordinate={marker} />
+                    <Marker
+                        key={index}
+                        coordinate={marker}
+                        //image={require('../assets/Image/mark_Button.png')}
+                    />
                 ))}
             </MapView>
             <ButtonMagnifier/>

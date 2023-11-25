@@ -17,7 +17,7 @@ const UserName = styled.View`
     top: 2%;
     left: 4%;
     width: 95%;
-    //height: %; 
+    height: 100%; 
     position: absolute;
 `;
 const UserCars = styled.View`
@@ -25,7 +25,7 @@ const UserCars = styled.View`
     top: 50%;
     left: 4%;
     width: 90%;
-    //height: %; 
+    height: 100%; 
     position: absolute;
 `;
 

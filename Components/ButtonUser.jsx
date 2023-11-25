@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 import React from 'react';
 
 const ButtonComponentUser = styled.Image`
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 `;
 
 const Touch = styled.TouchableOpacity`
@@ -20,7 +20,7 @@ export const ButtonUser = ({onPress}) => {
     return (
         <Container>
             <Touch onPress={onPress}>
-                <ButtonComponentUser source={require('../assets/Image/ButtonUser.png')}/>
+                <ButtonComponentUser source={require('../assets/Image/Profile_Button.png')}/>
             </Touch>
         </Container>
     );
