@@ -35,6 +35,8 @@ const INITIAL_REGION =  {
         <ScreenView>
             <MapView
                 style={styles.ScreenMapView}
+
+
                 initialRegion={INITIAL_REGION}
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation
