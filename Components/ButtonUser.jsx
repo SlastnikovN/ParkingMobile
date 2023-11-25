@@ -15,26 +15,20 @@ const Container = styled.View`
     right: 2%;
 `
 
-<<<<<<< Updated upstream
+
 export const ButtonUser = ({onPress}) => {
     return (
         <Container>
             <Touch onPress={onPress}>
-                <ButtonComponentUser source={require('../assets/ButtonUser.png')}/>
+                <ButtonComponentUser source={require('../assets/Image/ButtonUser.png')}/>
             </Touch>
         </Container>
     );
 };
-=======
-export const ButtonUser = () => {
-    return <Container>
-        <Touch>
-            <ButtonComponentUser source={require('../assets/Image/ButtonUser.png')}/>
-        </Touch>
-    </Container>
 
 
 
 
-}
->>>>>>> Stashed changes
+
+
+
