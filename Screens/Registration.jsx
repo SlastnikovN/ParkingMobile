@@ -1,16 +1,44 @@
 import React, { useState } from 'react';
-import {View, Text, TextInput, Button, StyleSheet, Image} from 'react-native';
+import {Button} from 'react-native';
 import styled from "styled-components/native";
+import {StatusBar} from "expo-status-bar";
 
+const ScreenView = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ScreenView_ = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+const RegistrationText = styled.Text`
+  font-size: 38px;
+  margin-bottom: 16px;
+  bottom: 10%;
+  align-items: center;
+  font-weight: normal;
+`
+
+const TextInp = styled.TextInput`
+  width: 350px;
+  height: 40px;
+  border-color: gray;
+  border-radius: 10px;
+  border-width: 1px;
+  margin-bottom: 16px;
+`
 
 const CarImage = styled.Image`
   flex: 1;
-  width: 430px; 
+  width: 430px;
   height: 430px;
 `;
 
-
-const RegistrationScreen = () => {
+const RegistrationScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,67 +46,29 @@ const RegistrationScreen = () => {
         // Здесь можно добавить логику для отправки данных на сервер
         console.log('Email:', email);
         console.log('Password:', password);
-        // Здесь можно  добавить проверки и обработку ошибок
-
-        // После успешной регистрации можно перенаправить пользователя на другой экран
+        navigation.navigate("Home");
     };
 
     return (
-        <View style={styles.container}>
+        <ScreenView>
+            <StatusBar></StatusBar>
             <CarImage source={require('../assets/Image/CarPhotoReg.jpg')}></CarImage>
-
-            <View style={styles.container1}>
-                <Text style={styles.title}>Регистрация</Text>
-                <TextInput
-                    style={styles.input}
+            <ScreenView_>
+                <RegistrationText>Регистрация</RegistrationText>
+                <TextInp
                     placeholder="Email"
                     onChangeText={(text) => setEmail(text)}
                     value={email}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Пароль"
+                <TextInp
+                    placeholder="Password"
                     secureTextEntry
                     onChangeText={(text) => setPassword(text)}
                     value={password}
                 />
                 <Button title="Зарегистрироваться" onPress={handleRegistration} />
-            </View>
-
-
-        </View>
+            </ScreenView_>
+        </ScreenView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 16,
-    },
-    container1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: "center",
-
-    },
-    title: {
-        fontSize: 38,
-        marginBottom: 16,
-        bottom: '10%',
-        alignItems: "center",
-        fontWeight: "normal",
-    },
-    input: {
-        width: 350,
-        height: 40,
-        borderColor: 'gray',
-        borderRadius: 10,
-        borderWidth: 1,
-        paddingHorizontal: 8,
-        marginBottom: 16,
-    },
-});
-
 export default RegistrationScreen;

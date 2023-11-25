@@ -1,5 +1,5 @@
 import React, {Touch} from 'react';
-import {View, Text, Button, FlatList, Image, Touc} from 'react-native';
+import {View, Text, Button, FlatList, Image} from 'react-native';
 import styled from 'styled-components/native';
 
 const ProfileContainer = styled.View`
@@ -15,7 +15,7 @@ const ProfileContainer = styled.View`
 
 const View_Avatar = styled.View`
     flex: 1;
-    top: 15 %;
+    top: 15%;
     left: 13%;
     width: 75%;
     height: 45%; 

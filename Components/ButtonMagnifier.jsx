@@ -13,10 +13,8 @@ position: absolute;
 bottom: 10%;
 align-items: center;
   right: 0;
-  left: 0
-;
+  left: 0;
 
-//background-color: blueviolet;  
 `
 
 export const ButtonMagnifier = () => {
