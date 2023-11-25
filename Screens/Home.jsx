@@ -35,8 +35,6 @@ const INITIAL_REGION =  {
         <ScreenView>
             <MapView
                 style={styles.ScreenMapView}
-
-
                 initialRegion={INITIAL_REGION}
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation
@@ -46,7 +44,6 @@ const INITIAL_REGION =  {
                     <Marker
                         key={index}
                         coordinate={marker}
-                        //image={require('../assets/Image/mark_Button.png')}
                     />
                 ))}
             </MapView>

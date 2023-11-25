@@ -13,7 +13,6 @@ export default function App() {
   const [user, setUser] = useState(null);
   const url = new URL('http://79.174.82.190:8888/api/v1/profile?mail=example@example.com');
 
-
 const getDataUsingGet = () => {
     fetch(url, {
         method: 'GET',
