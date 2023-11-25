@@ -52,13 +52,8 @@ const INITIAL_REGION =  {
                 ))}
             </MapView>
             <ButtonMagnifier/>
-<<<<<<< HEAD
             <ButtonUser onPress={toggleProfile} title = "Toggle Profile"/> 
             {isProfileOpen && <UserInformation user={user} isProfileOpen = {isProfileOpen} setIsProfileOpen = {setIsProfileOpen}/>}
-=======
-            <ButtonUser onPress={toggleProfile} title = "Toggle Profile"/>
-            {isProfileOpen && <UserInformation user={user}/>}
->>>>>>> 6a4fef3f34c66ff584a14689579207d807d4d334
         </ScreenView>
     );
 };
