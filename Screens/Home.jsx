@@ -9,6 +9,8 @@ import {markers} from "../assets/Markers";
 import {StatusBar} from "expo-status-bar";
 import { SearchPanel } from '../Components/SearchPanel';
 import { Alert } from 'react-native';
+import { ParkingInfo } from '../Components/ParkingInfo';
+
 
 //StyledComponent
 const ScreenView = styled.View`
@@ -18,6 +20,7 @@ const ScreenView = styled.View`
 export const Home = ({ route, navigation }) =>{
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isSearchVisible, setIsSearchVisible] = useState(false);
+
     const {user} = route.params;
 
     const toggleProfile = () => {
@@ -30,6 +33,10 @@ export const Home = ({ route, navigation }) =>{
             console.log("Панель поиска теперь:", !prevState);
             return !prevState; 
         });
+    };
+
+    const toggleOrder = () => {
+        setIsOrderOpen(!isProfileOpen);
     };
 
     useEffect(() => {
