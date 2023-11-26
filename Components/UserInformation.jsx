@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text,} from 'react-native';
 import styled from 'styled-components/native';
 import { ButtonCloseProfile } from './ButtonCloseProfile';
 import { CarNumbers } from './CarNumbers';
+import { ButtonLogout } from './ButtonLogout';
 
 const ProfileContainer = styled.View`
     flex: 1;
@@ -13,6 +14,7 @@ const ProfileContainer = styled.View`
     position: absolute;
     background-color: white;
     border-radius: 30px;
+    box-shadow: 5px 5px 5px black;
 `;
 
 const View_Avatar = styled.View`
@@ -76,13 +78,20 @@ const Text_email = styled.Text`
 `;
 
 const View_ButtonClouse = styled.View`
-    top: 4%;
+    top: -3%;
     left: 85%;
     width: 10%;
     height: 7%;
 `;
 
-export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCarPress }) => {
+const View_ButtonLogout = styled.View`
+    top: 4%;
+    left: 4%;
+    width: 10%;
+    height: 7%;
+`;
+
+export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCarPress,}) => {
     console.log("User data in UINF", user)
     if (!user || !user.cars) {
         return <Text>Данные пользователя не загружены</Text>;
@@ -95,8 +104,13 @@ export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCa
         setIsProfileOpen(!isProfileOpen);
     };
 
+
     return (
+        
         <ProfileContainer>
+                <View_ButtonLogout>
+                    <ButtonLogout onPress={toggleProfile} title = "Toggle Profile"/>
+                 </View_ButtonLogout>                
                 <View_ButtonClouse>
                     <ButtonCloseProfile onPress={toggleProfile} title = "Toggle Profile"/>
                  </View_ButtonClouse>
@@ -110,9 +124,7 @@ export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCa
                     <View_СarsPanel>
                         <CarNumbers cars={user.cars} onAddCarPress={onAddCarPress}/>
                     </View_СarsPanel>
-                 </View_Сars>
-                 
+                 </View_Сars>  
         </ProfileContainer>
     );
 };
-

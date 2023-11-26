@@ -1,12 +1,13 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TextInput, Keyboard} from 'react-native';
 import styled from "styled-components/native";
 import {ButtonMagnifier} from "../Components/ButtonMagnifier";
 import {UserInformation} from '../Components/UserInformation';
 import {ButtonUser} from "../Components/ButtonUser";
-import { useEffect, useState } from 'react';
+import { useEffect, useState,} from 'react';
 import MapView, {Marker,PROVIDER_GOOGLE} from 'react-native-maps';
 import {markers} from "../assets/Markers";
 import {StatusBar} from "expo-status-bar";
+
 
 const ScreenView = styled.View`
     flex: 1;
@@ -14,13 +15,25 @@ const ScreenView = styled.View`
 
 export const Home = ({ route, navigation }) =>{
     const [isProfileOpen, setIsProfileOpen] = useState(false);
-
+    const [isSearchVisible, setIsSearchVisible] = useState(false);
     const {user} = route.params;
 
     const toggleProfile = () => {
         setIsProfileOpen(!isProfileOpen);
         console.log("isProfileOpen", isProfileOpen);
     };
+
+    const handleSearchToggle = () => {
+        setIsSearchVisible(prevState => {
+            console.log("Панель поиска теперь:", !prevState);
+            return !prevState;
+        });
+      };
+    
+      const dismissKeyboard = () => {
+        Keyboard.dismiss();
+        setIsSearchVisible(false);
+      };
 
     useEffect(() => {
         console.log("Текущие состояние Profile: ", isProfileOpen);
@@ -51,7 +64,7 @@ const INITIAL_REGION =  {
                     />
                 ))}
             </MapView>
-            <ButtonMagnifier/>
+            <ButtonMagnifier onPress={handleSearchToggle} title = "handleSearchToggle"/>
             <ButtonUser onPress={toggleProfile} title = "Toggle Profile"/> 
             {isProfileOpen && <UserInformation user={user} isProfileOpen = {isProfileOpen} setIsProfileOpen = {setIsProfileOpen}/>}
         </ScreenView>
