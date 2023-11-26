@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {StyleSheet, TextInput, TouchableOpacity,Text} from 'react-native';
 import styled from "styled-components/native";
-import {StatusBar} from "expo-status-bar";
 
 const ScreenView = styled.View`
   flex: 1;
@@ -57,7 +56,7 @@ const LoginScreen = ({navigation}) => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    return response.json();
+                    return response.json() && navigation.navigate("Home");;
                 }else if (response.status === 404) {
                     alert('Пользователь не найден');
                     console.error('Пользователь не найден:', response.status)
@@ -82,7 +81,6 @@ const LoginScreen = ({navigation}) => {
 
     return (
         <ScreenView>
-            <StatusBar></StatusBar>
             <CarImage source={require('../assets/Image/CarPhotoReg.jpg')}></CarImage>
             <ScreenView_>
                 <RegistrationText>Авторизация пользователя</RegistrationText>

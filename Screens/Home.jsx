@@ -1,4 +1,4 @@
-import {StyleSheet, TextInput, Keyboard} from 'react-native';
+import {StyleSheet} from 'react-native';
 import styled from "styled-components/native";
 import {ButtonMagnifier} from "../Components/ButtonMagnifier";
 import {UserInformation} from '../Components/UserInformation';
@@ -8,7 +8,6 @@ import MapView, {Marker,PROVIDER_GOOGLE} from 'react-native-maps';
 import {markers} from "../assets/Markers";
 import {StatusBar} from "expo-status-bar";
 import { SearchPanel } from '../Components/SearchPanel';
-
 
 const ScreenView = styled.View`
     flex: 1;

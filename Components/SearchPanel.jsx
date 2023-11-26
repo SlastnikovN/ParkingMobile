@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {StyleSheet, TextInput, TouchableOpacity,Text} from 'react-native';
+import {StyleSheet, TextInput} from 'react-native';
 import styled from 'styled-components/native';
 
 const ScreenView_ = styled.View`

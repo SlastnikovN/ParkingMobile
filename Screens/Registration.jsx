@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {StyleSheet, TextInput, TouchableOpacity,Text} from 'react-native';
 import styled from "styled-components/native";
-import {StatusBar} from "expo-status-bar";
 
 const ScreenView = styled.View`
   flex: 1;
@@ -55,7 +54,7 @@ const RegistrationScreen = ({navigation}) => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    return response.json();
+                    return response.json() &&  navigation.navigate("Home");;
                 }else if (response.status === 409) {
                     alert('Пользователь с данным email уже существует');
                     console.error('Пользователь с данным email уже существует:', response.status)
@@ -66,8 +65,6 @@ const RegistrationScreen = ({navigation}) => {
             })
             .then((data) => {
                 console.log('Success:', data);
-                // После успешной регистрации перенаправить на Home
-                navigation.navigate("Home");
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -79,7 +76,6 @@ const RegistrationScreen = ({navigation}) => {
     }
     return (
         <ScreenView>
-            <StatusBar></StatusBar>
             <CarImage source={require('../assets/Image/CarPhotoReg.jpg')}></CarImage>
             <ScreenView_>
                 <RegistrationText>Регистрация пользователя</RegistrationText>

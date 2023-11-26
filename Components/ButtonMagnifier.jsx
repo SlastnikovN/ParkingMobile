@@ -14,7 +14,6 @@ bottom: 10%;
 align-items: center;
   right: 0;
   left: 0;
-
 `
 
 export const ButtonMagnifier = ({onPress}) => {

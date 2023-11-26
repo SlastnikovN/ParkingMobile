@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity} from 'react-native';
 
 const CarNumbersContainer = styled.View`
   flex-direction: row; 
@@ -34,7 +34,6 @@ const AddCarButton = styled(TouchableOpacity)`
   margin: 5px; 
 `;
 
-// Компонент для отображения номеров машин и кнопки добавления
 export const CarNumbers = ({ cars, onAddCarPress }) => {
   return (
     <CarNumbersContainer>

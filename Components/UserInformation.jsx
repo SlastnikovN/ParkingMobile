@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Text,} from 'react-native';
 import styled from 'styled-components/native';
 import { ButtonCloseProfile } from './ButtonCloseProfile';
@@ -69,7 +69,6 @@ const Text_username = styled.Text`
     font-size: 24px;
     top: -10%;
     font-weight:bold;
-    
 `;
 
 const Text_email = styled.Text`
@@ -97,10 +96,8 @@ export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCa
     if (!user || !user.cars) {
         return <Text>Данные пользователя не загружены</Text>;
     }
-
     console.log("User UINF", user);
     user.cars.forEach(car => console.log(car));
-
     const toggleProfile = () => {
         setIsProfileOpen(!isProfileOpen);
     };
@@ -109,7 +106,6 @@ export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCa
     }
 
     return (
-        
         <ProfileContainer>
                 <View_ButtonLogout>
                     <ButtonLogout onPress={clickLogin} title = "ClickLogin"/>

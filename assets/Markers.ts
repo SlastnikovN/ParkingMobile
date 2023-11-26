@@ -1,4 +1,4 @@
-
+//Getting coordinates of parking addresses
 export const markers = [
     //Underground parking
     {
@@ -14,8 +14,6 @@ export const markers = [
         latitudeDelta: 1,
         longitudeDelta: 1,
     }
-
-
 ]
 
 

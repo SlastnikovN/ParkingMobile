@@ -15,7 +15,6 @@ const Container = styled.View`
     right: 2%;
 `
 
-
 export const ButtonUser = ({onPress}) => {
     return (
         <Container>
