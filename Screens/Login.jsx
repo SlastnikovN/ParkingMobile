@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {StyleSheet, TextInput, TouchableOpacity,Text} from 'react-native';
 import styled from "styled-components/native";
 
+//StyledComponents
 const ScreenView = styled.View`
   flex: 1;
   justify-content: center;
@@ -41,9 +42,8 @@ const LoginScreen = ({navigation}) => {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        //Сервер
+        //POST server request
         const apiUrl = 'http://79.174.82.190:8888/api/v1/login';
-
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -75,6 +75,7 @@ const LoginScreen = ({navigation}) => {
             });
     };
 
+    //Navigate
     const clickReg = () => {
         navigation.navigate("Registration");
     }

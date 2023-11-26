@@ -9,6 +9,7 @@ import {markers} from "../assets/Markers";
 import {StatusBar} from "expo-status-bar";
 import { SearchPanel } from '../Components/SearchPanel';
 
+//StyledComponent
 const ScreenView = styled.View`
     flex: 1;
 `;
