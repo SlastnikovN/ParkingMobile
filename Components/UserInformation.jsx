@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { ButtonCloseProfile } from './ButtonCloseProfile';
 import { CarNumbers } from './CarNumbers';
 import { ButtonLogout } from './ButtonLogout';
-
+import { useNavigation } from '@react-navigation/native';
 const ProfileContainer = styled.View`
     flex: 1;
     top: 23%;
@@ -91,7 +91,8 @@ const View_ButtonLogout = styled.View`
     height: 7%;
 `;
 
-export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCarPress,}) => {
+export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCarPress}) => {
+    const navigation = useNavigation();
     console.log("User data in UINF", user)
     if (!user || !user.cars) {
         return <Text>Данные пользователя не загружены</Text>;
@@ -103,13 +104,16 @@ export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCa
     const toggleProfile = () => {
         setIsProfileOpen(!isProfileOpen);
     };
+    const ClickLogin = () =>{
+        navigation.navigate("Login");
+    }
 
 
     return (
         
         <ProfileContainer>
                 <View_ButtonLogout>
-                    <ButtonLogout onPress={toggleProfile} title = "Toggle Profile"/>
+                    <ButtonLogout onPress={ClickLogin} title = "ClickLogin"/>
                  </View_ButtonLogout>                
                 <View_ButtonClouse>
                     <ButtonCloseProfile onPress={toggleProfile} title = "Toggle Profile"/>

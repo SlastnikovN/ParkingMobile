@@ -5,6 +5,7 @@ import Registration from "./Screens/Registration";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from "./Screens/Login";
+import {UserInformation} from "./Components/UserInformation";
 
 const Stack = createNativeStackNavigator();
 const ScreenView = styled.View`
@@ -59,6 +60,7 @@ export default function App() {
                 <Stack.Screen name="Home" component={Home} initialParams={{user: user}}/>
                 <Stack.Screen name="Registration" component={Registration}/>
                 <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="UserInformation" component={UserInformation}/>
             </Stack.Navigator></NavigationContainer>
     );
 }
