@@ -35,14 +35,16 @@ const CarImage = styled.Image`
   height: 100%;
 `;
 
-const RegistrationScreen = ({navigation}) => {
+const LoginScreen = ({navigation}) => {
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const handleRegistration = () => {
+    const handleLogin = () => {
         console.log('Email:', email);
         console.log('Password:', password);
+
         //Сервер
-        const apiUrl = 'http://79.174.82.190:8888/api/v1/registration';
+        const apiUrl = 'http://79.174.82.190:8888/api/v1/login';
+
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -56,9 +58,9 @@ const RegistrationScreen = ({navigation}) => {
             .then((response) => {
                 if (response.status === 200) {
                     return response.json();
-                }else if (response.status === 409) {
-                    alert('Пользователь с данным email уже существует');
-                    console.error('Пользователь с данным email уже существует:', response.status)
+                }else if (response.status === 404) {
+                    alert('Пользователь не найден');
+                    console.error('Пользователь не найден:', response.status)
                 } else if (response.status === 500) {
                     alert('Ошибка сервера');
                     console.error('Ошибка сервера:', response.status)
@@ -75,14 +77,15 @@ const RegistrationScreen = ({navigation}) => {
     };
 
     const ClickReg = () => {
-        navigation.navigate("Login");
+        navigation.navigate("Registration");
     }
+
     return (
         <ScreenView>
             <StatusBar></StatusBar>
             <CarImage source={require('../assets/Image/CarPhotoReg.jpg')}></CarImage>
             <ScreenView_>
-                <RegistrationText>Регистрация пользователя</RegistrationText>
+                <RegistrationText>Авторизация пользователя</RegistrationText>
                 <TextInput style={styles.TextInp}
                            placeholder=" Введите Email"
                            onChangeText={(text) => setEmail(text)}
@@ -95,18 +98,18 @@ const RegistrationScreen = ({navigation}) => {
                            value={password}
                 />
                 <ScreenButtonView>
-                    <TouchableOpacity onPress={handleRegistration}>
-                        <Text style={styles.Btn}>Зарегистрироваться</Text>
+                    <TouchableOpacity onPress={handleLogin}>
+                        <Text style={styles.Btn}>Авторизоваться</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={ClickReg}>
-                        <Text style={styles.Btn}>Назад</Text>
+                        <Text style={styles.Btn}>Регистрация</Text>
                     </TouchableOpacity>
                 </ScreenButtonView>
             </ScreenView_>
         </ScreenView>
     );
 };
-export default RegistrationScreen;
+export default LoginScreen;
 const styles = StyleSheet.create({
     TextInp: {
         width: 320,
