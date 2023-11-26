@@ -34,7 +34,6 @@ export default function App() {
             })
             .then((responseJson) => {
                 if (responseJson) {
-                    alert(JSON.stringify(responseJson));
                     setUser(responseJson);
                     console.log(responseJson);
                 }
