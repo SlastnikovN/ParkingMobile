@@ -17,9 +17,9 @@ align-items: center;
 
 `
 
-export const ButtonMagnifier = () => {
+export const ButtonMagnifier = ({onPress}) => {
     return <ScreenView>
-        <Touch>
+        <Touch onPress={onPress}>
             <ButtonComponentMagnifier source={require('../assets/Image/magnifier_Button.png')}/>
         </Touch>
     </ScreenView>

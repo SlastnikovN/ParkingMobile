@@ -15,6 +15,7 @@ const CarNumber = styled.View`
   border-radius: 10px; 
   padding: 8px 16px; 
   margin: 5px; 
+  box-shadow: 4px 4px 5px gray;
 `;
 
 const CarNumberText1 = styled.Text`
