@@ -7,6 +7,7 @@ import { useEffect, useState,} from 'react';
 import MapView, {Marker,PROVIDER_GOOGLE} from 'react-native-maps';
 import {markers} from "../assets/Markers";
 import {StatusBar} from "expo-status-bar";
+import { SearchPanel } from '../Components/SearchPanel';
 
 
 const ScreenView = styled.View`
@@ -26,14 +27,9 @@ export const Home = ({ route, navigation }) =>{
     const handleSearchToggle = () => {
         setIsSearchVisible(prevState => {
             console.log("Панель поиска теперь:", !prevState);
-            return !prevState;
+            return !prevState; 
         });
-      };
-    
-      const dismissKeyboard = () => {
-        Keyboard.dismiss();
-        setIsSearchVisible(false);
-      };
+    };
 
     useEffect(() => {
         console.log("Текущие состояние Profile: ", isProfileOpen);
@@ -65,6 +61,7 @@ const INITIAL_REGION =  {
                 ))}
             </MapView>
             <ButtonMagnifier onPress={handleSearchToggle} title = "handleSearchToggle"/>
+            {isSearchVisible && <SearchPanel/>}
             <ButtonUser onPress={toggleProfile} title = "Toggle Profile"/> 
             {isProfileOpen && <UserInformation user={user} isProfileOpen = {isProfileOpen} setIsProfileOpen = {setIsProfileOpen}/>}
         </ScreenView>

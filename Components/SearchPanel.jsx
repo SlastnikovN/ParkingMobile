@@ -1,39 +1,52 @@
 import React, { useState } from 'react';
-import { View, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import ButtonMagnifier from './ButtonMagnifier'; 
+import {StyleSheet, TextInput, TouchableOpacity,Text} from 'react-native';
+import styled from 'styled-components/native';
 
 const ScreenView_ = styled.View`
   flex: 1;
-  width: 20%;
-  height: 20%;
-  background-color: red;
+  top: 55%;
+  left: 17%;
+  width: 70%;
+  height: 5%;
+  position: absolute;
   justify-content: center;
   align-items: center;
 `;
 
-export const SearchPanel = ({onPress}) => {
+export const SearchPanel = ({ }) => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const handleSearchToggle = () => {
-    setIsSearchVisible(!isSearchVisible);
-    console.log("isSearchVisible", isSearchVisible);
-  };
-
-  const dismissKeyboard = () => {
-    Keyboard.dismiss();
-    setIsSearchVisible(false);
+    setIsSearchVisible(isSearchVisible => {
+        console.log("Панель поиска теперь:", !isSearchVisible);
+        return !isSearchVisible;
+    });
   };
 
   return (
-    <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <ScreenView_>
-        {isSearchVisible && (
-            <TextInput
-                style={{  height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 5, paddingHorizontal: 10 }}
-                placeholder="Введите запрос для поиска..."
+            <TextInput 
+                style={styles.TextInp}
+                placeholder="Поиск"
             />
-            )}
       </ScreenView_>
-    </TouchableWithoutFeedback>
   );
 };
+
+const styles = StyleSheet.create({
+  TextInp: {
+      width: 320,
+      height: 60,
+      borderColor: 'gray',
+      borderRadius: 10,
+      borderTopColor: '#007AFF',
+      borderBottomColor: '#007AFF',
+      borderRightColor: '#007AFF',
+      borderLeftColor: '#007AFF',
+      borderWidth: 5,
+      marginBottom: 16,
+      paddingHorizontal: 16,
+      fontSize: 24,
+      backgroundColor: 'white',
+  },
+});
