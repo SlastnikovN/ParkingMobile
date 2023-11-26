@@ -8,6 +8,7 @@ import MapView, {Marker,PROVIDER_GOOGLE} from 'react-native-maps';
 import {markers} from "../assets/Markers";
 import {StatusBar} from "expo-status-bar";
 import { SearchPanel } from '../Components/SearchPanel';
+import { Alert } from 'react-native';
 
 //StyledComponent
 const ScreenView = styled.View`
@@ -43,6 +44,15 @@ const INITIAL_REGION =  {
     latitudeDelta: 1,
     longitudeDelta: 1,
 }
+
+    const onMarkerPress = (marker) => {
+        Alert.alert(
+            "Информация о маркере",
+            `Выбран маркер: ${marker.name}`,
+            [{ text: "OK" }]
+        );
+    };
+
     return (
         <ScreenView>
             <StatusBar></StatusBar>
@@ -53,10 +63,12 @@ const INITIAL_REGION =  {
                 showsUserLocation
                 showsMyLocationButton
             >
-                {markers.map((marker,index) => (
+                {markers.map((marker,index ) => (
                     <Marker
                         key={index}
                         coordinate={marker}
+                        pinColor="#535ec9"
+                        onPress={() => onMarkerPress(marker)}
                     />
                 ))}
             </MapView>
