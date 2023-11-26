@@ -76,7 +76,7 @@ const LoginScreen = ({navigation}) => {
             });
     };
 
-    const ClickReg = () => {
+    const clickReg = () => {
         navigation.navigate("Registration");
     }
 
@@ -101,7 +101,7 @@ const LoginScreen = ({navigation}) => {
                     <TouchableOpacity onPress={handleLogin}>
                         <Text style={styles.Btn}>Авторизоваться</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={ClickReg}>
+                    <TouchableOpacity onPress={clickReg}>
                         <Text style={styles.Btn}>Регистрация</Text>
                     </TouchableOpacity>
                 </ScreenButtonView>

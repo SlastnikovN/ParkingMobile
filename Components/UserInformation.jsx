@@ -5,6 +5,7 @@ import { ButtonCloseProfile } from './ButtonCloseProfile';
 import { CarNumbers } from './CarNumbers';
 import { ButtonLogout } from './ButtonLogout';
 import { useNavigation } from '@react-navigation/native';
+
 const ProfileContainer = styled.View`
     flex: 1;
     top: 23%;
@@ -29,13 +30,12 @@ const View_Avatar = styled.View`
     border-bottom-width: 1px;
 `;
 
-const Image_Avatar = styled.View`
+const Image_Avatar = styled.Image`
     top: -20%;
-    left: 0%;
+    left: 0;
     width: 58%;
     height: 70%;
-    border-radius: 10px;    
-    background-color: green;
+    border-radius: 10px;
 `;
 
 const Text_Regcars = styled.Text`
@@ -104,22 +104,21 @@ export const UserInformation = ({ user, isProfileOpen, setIsProfileOpen, onAddCa
     const toggleProfile = () => {
         setIsProfileOpen(!isProfileOpen);
     };
-    const ClickLogin = () =>{
+    const clickLogin = () =>{
         navigation.navigate("Login");
     }
-
 
     return (
         
         <ProfileContainer>
                 <View_ButtonLogout>
-                    <ButtonLogout onPress={ClickLogin} title = "ClickLogin"/>
+                    <ButtonLogout onPress={clickLogin} title = "ClickLogin"/>
                  </View_ButtonLogout>                
                 <View_ButtonClouse>
                     <ButtonCloseProfile onPress={toggleProfile} title = "Toggle Profile"/>
                  </View_ButtonClouse>
                  <View_Avatar>
-                     <Image_Avatar></Image_Avatar>
+                     <Image_Avatar source={require("../assets/Image/ProfilePhoto.jpg")}></Image_Avatar>
                      <Text_username>{user.username}</Text_username>
                      <Text_email>Email: {user.email}</Text_email>
                  </View_Avatar>
