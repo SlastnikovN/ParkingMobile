@@ -10,4 +10,3 @@ As part of the task, participants will have to implement an effective tool for b
 Realization:
 https://github.com/SlastnikovN/ParkingMobile/assets/106885591/82159559-a631-4bd3-9fc6-2198ac6b9516
 
-https://user-images.githubusercontent.com/6877923/106885591/82159559-a631-4bd3-9fc6-2198ac6b9516.mp4
